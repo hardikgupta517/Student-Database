@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head><title>Search Student</title></head>
+<body>
+  <h2>Search</h2>
+  <form method="post">
+    <!-- A form to submit search queries. The method is POST, meaning data will be sent to the server.-->
+    Search by name or roll: <input type="text" name="query">
+    <!-- A label ("Search by name or roll:") and a text box (<input type="text">).-->
+    <input type="submit" value="Search">
+    <!-- A submit button to send the form data.-->
+  </form>
+  <hr>
+  {% if result %}
+  <!-- Jinja2 conditional. If there are results, display them in a list. -->
+  <!-- It checks if the result variable (a list of matching students) is not empty.-->
+    <ul>
+      <!-- unordered list-->
+      {% for s in result %}
+      <!-- A Jinja2 loop that goes through each student (s) in the search results.-->
+        <li>{{ s.name }} ({{ s.roll }}) - {{ s.branch }}</li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+</body>
+</html>
